@@ -14,6 +14,7 @@ public class Computer {
     }
 
     public void initBallList() {
+        ballList.clear();
         for (int i = 0; i < MAXIMUM_LENGTH; i++) {
             ballList.add(getRandomData());
         }
