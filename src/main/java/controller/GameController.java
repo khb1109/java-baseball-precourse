@@ -18,11 +18,12 @@ public class GameController {
 
     public void gameStart() {
         computer.initBallList();
+        String userNumber = new String();
         do {
             Output.printNumberRequest();
-            String userNumber = input.getNumber();
-            Output.printCount(computer);
-        } while (computer.getStrike() != MAX_LENGTH);
+            userNumber = input.getNumber();
+            Output.printCount(computer, userNumber) ;
+        } while (computer.getStrike(userNumber) != MAX_LENGTH);
         gameEnd();
     }
     private void gameEnd() {

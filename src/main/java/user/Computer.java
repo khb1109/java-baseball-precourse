@@ -7,7 +7,7 @@ public class Computer {
 
     private final static int MAXIMUM_LENGTH = 3;
 
-    private final List<Integer> ballList;
+    private final List<Character> ballList;
 
     public Computer() {
         ballList = new ArrayList<>();
@@ -23,20 +23,38 @@ public class Computer {
     public int getStrike(String userNumber) {
         int strike = 0;
         for (int i = 0; i < MAXIMUM_LENGTH; i++) {
-            strike += charEqualInt(userNumber.charAt(i), ballList.get(i));
+            strike += isEqualAdd(userNumber.charAt(i), ballList.get(i));
         }
         return strike;
     }
 
-    private int charEqualInt(char number1, int number2) {
-        if ((number1 - '0') == number2)
+    private int isEqualAdd(char number1, char number2) {
+        if (number1 == number2)
             return 1;
         return 0;
     }
 
     public int getBall(String userNumber) {
         int ball = 0;
+        for (int i = 0; i < MAXIMUM_LENGTH; i++)
+            ball += userNumberLoop(userNumber, i);
         return ball;
+    }
+
+    private int userNumberLoop(String userNumber, int i) {
+        int ballCount = 0;
+        for (int j = 0; j < MAXIMUM_LENGTH; j++) {
+            ballCount += isBallCountAdd(userNumber.charAt(i), ballList.get(j), i == j);
+        }
+        return ballCount;
+    }
+
+    private int isBallCountAdd(char number1, char number2, boolean eqalIndex) {
+        if (eqalIndex)
+            return 0;
+        if (number1 == number2)
+            return 1;
+        return 0;
     }
 
     public boolean isNotting(String userNumber) {
@@ -45,10 +63,10 @@ public class Computer {
         return false;
     }
 
-    private int getRandomData() {
+    private char getRandomData() {
         int tempData = (int) (Math.random() * 9 + 1);
         if (ballList.stream().anyMatch(x -> x == tempData))
             return getRandomData();
-        return tempData;
+        return (char) (tempData + '0');
     }
 }
