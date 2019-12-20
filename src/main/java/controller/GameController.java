@@ -6,7 +6,7 @@ import user.Computer;
 
 public class GameController {
 
-    private final static int THREE_STRIKE = 3;
+    private final static int MAX_LENGTH = 3;
 
     private final Computer computer;
     private final Input input;
@@ -20,9 +20,9 @@ public class GameController {
         computer.initBallList();
         do {
             Output.printNumberRequest();
-            input.getNumber();
+            String userNumber = input.getNumber();
             Output.printCount(computer);
-        } while (computer.getStrike() != THREE_STRIKE);
+        } while (computer.getStrike() != MAX_LENGTH);
         gameEnd();
     }
     private void gameEnd() {
