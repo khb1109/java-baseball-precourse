@@ -20,16 +20,27 @@ public class Computer {
         }
     }
 
-    public int getStrike() {
-        return 1;
+    public int getStrike(String userNumber) {
+        int strike = 0;
+        for (int i = 0; i < MAXIMUM_LENGTH; i++) {
+            strike += charEqualInt(userNumber.charAt(i), ballList.get(i));
+        }
+        return strike;
     }
 
-    public int getBall() {
-        return 1;
+    private int charEqualInt(char number1, int number2) {
+        if ((number1 - '0') == number2)
+            return 1;
+        return 0;
     }
 
-    public boolean isNotting() {
-        if (getStrike() == 0 && getBall() == 0)
+    public int getBall(String userNumber) {
+        int ball = 0;
+        return ball;
+    }
+
+    public boolean isNotting(String userNumber) {
+        if (getStrike(userNumber) == 0 && getBall(userNumber) == 0)
             return true;
         return false;
     }
