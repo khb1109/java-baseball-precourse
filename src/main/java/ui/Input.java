@@ -25,9 +25,9 @@ public class Input {
 
     public boolean getRestartOrExit() {
         String answer = sc.next();
-        if (answer.equals("y") || answer.equals("Y"))
+        if (answer.equals("1"))
             return true;
-        if (answer.equals("n") || answer.equals("N"))
+        if (answer.equals("2"))
             return false;
         return getRestartOrExit();
     }

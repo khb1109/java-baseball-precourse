@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class Output {
 
     public static void printNumberRequest() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
     }
 
     public static void printGameEnd() {
@@ -18,10 +18,11 @@ public class Output {
 
     public static void printCount(Computer computer, String userNumber) {
         if (computer.getStrike(userNumber) > 0)
-            System.out.println(computer.getStrike(userNumber) + "스트라이크 ");
+            System.out.print(computer.getStrike(userNumber) + "스트라이크 ");
         if (computer.getBall(userNumber) > 0)
-            System.out.println(computer.getBall(userNumber) + "볼");
+            System.out.print(computer.getBall(userNumber) + "볼");
         if (computer.isNotting(userNumber))
-            System.out.println("낫싱");
+            System.out.print("낫싱");
+        System.out.println();
     }
 }
